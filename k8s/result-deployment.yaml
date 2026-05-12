@@ -29,7 +29,7 @@ spec:
           name: http-80-result
         env:
           - name: PG_HOST
-            value: "db"
+            value: "postgres-service-clusterip"
           - name: PG_PORT
             value: "5432"
           - name: PG_USER

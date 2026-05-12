@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Always  
         env:
           - name: PG_HOST
-            value: "db"
+            value: "postgres-service-clusterip"
           - name: PG_PORT
             value: "5432"
           - name: PG_USERNAME
