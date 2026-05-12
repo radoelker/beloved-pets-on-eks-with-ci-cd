@@ -17,10 +17,10 @@ namespace Worker
             try
             {
                 // Fetch configuration from environment variables
-                var dbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "db";
-                var dbUsername = Environment.GetEnvironmentVariable("DB_USERNAME") ?? "postgres";
-                var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "postgres";
-                var dbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "postgres";
+                var dbHost = Environment.GetEnvironmentVariable("PG_HOST") ?? "db";
+                var dbUsername = Environment.GetEnvironmentVariable("PG_USERNAME") ?? "postgres";
+                var dbPassword = Environment.GetEnvironmentVariable("PG_PASSWORD") ?? "postgres";
+                var dbName = Environment.GetEnvironmentVariable("PG_NAME") ?? "postgres";
                 
                 var redisHost = Environment.GetEnvironmentVariable("REDIS_HOST") ?? "redis";
 
@@ -47,7 +47,7 @@ namespace Worker
                     // Reconnect redis if down
                     if (redisConn == null || !redisConn.IsConnected)
                     {
-                        Console.WriteLine("Reconnecting Redis");
+                        Console.WriteLine($"Reconnecting Redis at {redisHost}");
                         redisConn = OpenRedisConnection(redisConnectionString);
                         redis = redisConn.GetDatabase();
                     }
@@ -61,7 +61,7 @@ namespace Worker
                         // Reconnect DB if down
                         if (!pgsql.State.Equals(System.Data.ConnectionState.Open))
                         {
-                            Console.WriteLine("Reconnecting DB");
+                            Console.WriteLine($"Reconnecting DB on {dbHost}");
                             pgsql = OpenDbConnection(pgConnectionString);
                         }
                         else
@@ -85,6 +85,8 @@ namespace Worker
         private static NpgsqlConnection OpenDbConnection(string connectionString)
         {
             NpgsqlConnection connection;
+            var builder = new NpgsqlConnectionStringBuilder(connectionString);
+            string host = builder.Host;
 
             while (true)
             {
@@ -96,17 +98,17 @@ namespace Worker
                 }
                 catch (SocketException)
                 {
-                    Console.Error.WriteLine("Waiting for db");
+                    Console.Error.WriteLine($"Waiting for db at {host}");
                     Thread.Sleep(1000);
                 }
                 catch (DbException)
                 {
-                    Console.Error.WriteLine("Waiting for db");
+                    Console.Error.WriteLine($"Waiting for db at {host}");
                     Thread.Sleep(1000);
                 }
             }
 
-            Console.Error.WriteLine("Connected to db");
+            Console.Error.WriteLine($"Connected to db at {host}");
 
             var command = connection.CreateCommand();
             command.CommandText = @"CREATE TABLE IF NOT EXISTS votes (
