@@ -1,0 +1,43 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: spot-eks-prd-rainer
+  region: us-east-1
+  version: "1.32"
+  tags:
+    lab: spot-prd
+    owner: rainer
+
+# IMPORTANT: pin AZs here at the cluster level so eksctl creates VPC subnets
+# in all three zones. Without this, eksctl picks only 2 AZs for the VPC and
+# the node group spec below will fail because it references AZs without subnets.
+availabilityZones:
+  - us-east-1a
+  - us-east-1b
+  - us-east-1c
+
+managedNodeGroups:
+  - name: spot-nodes
+    # Three families: Intel T3, AMD T3a, Intel T2 (older gen)
+    # EKS picks whichever pool has the most available capacity
+    instanceTypes:
+      - t3.small
+      - t3a.small
+      - t2.small
+    spot: true
+    minSize: 4
+    maxSize: 7
+    desiredCapacity: 4
+    # Must match the AZs declared at the cluster level above
+    availabilityZones:
+      - us-east-1a
+      - us-east-1b
+      - us-east-1c
+    amiFamily: AmazonLinux2023
+    labels:
+      lifecycle: spot
+    tags:
+      k8s.io/cluster-autoscaler/enabled: "true"
+    # SSM access is enabled by default in eksctl 0.200+
+    # No ssh block needed — use `aws ssm start-session` to access nodes

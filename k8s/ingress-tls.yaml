@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: beloved-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - vote.beloved-pets.rainer.ironlabs.online
+        - result.beloved-pets.rainer.ironlabs.online
+      secretName: beloved-tls-secret
+  rules:
+    - host: vote.beloved-pets.rainer.ironlabs.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vote-service
+                port:
+                  number: 80
+    - host: result.beloved-pets.rainer.ironlabs.online
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: result-service
+                port:
+                  number: 80

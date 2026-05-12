@@ -1,0 +1,293 @@
+{
+    "ResourceRecordSets": [
+        {
+            "Name": "ironlabs.online.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "Z2FDTNDATAQYW2",
+                "DNSName": "d2pg3ilvwy36ck.cloudfront.net.",
+                "EvaluateTargetHealth": false
+            }
+        },
+        {
+            "Name": "ironlabs.online.",
+            "Type": "NS",
+            "TTL": 172800,
+            "ResourceRecords": [
+                {
+                    "Value": "ns-335.awsdns-41.com."
+                },
+                {
+                    "Value": "ns-2014.awsdns-59.co.uk."
+                },
+                {
+                    "Value": "ns-1242.awsdns-27.org."
+                },
+                {
+                    "Value": "ns-990.awsdns-59.net."
+                }
+            ]
+        },
+        {
+            "Name": "ironlabs.online.",
+            "Type": "SOA",
+            "TTL": 900,
+            "ResourceRecords": [
+                {
+                    "Value": "ns-335.awsdns-41.com. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"
+                }
+            ]
+        },
+        {
+            "Name": "result.babs.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "a0f54a655dc594940a815c0f118ead2e-ae4946c9f08e90df.elb.us-east-1.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "vote.babs.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "a0f54a655dc594940a815c0f118ead2e-ae4946c9f08e90df.elb.us-east-1.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "diogus.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "singular-tiramisu-26edcb.netlify.app."
+                }
+            ]
+        },
+        {
+            "Name": "result.diogus.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "k8s-default-votingin-2fb597157b-316228458.us-east-1.elb.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "vote.diogus.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "k8s-default-votingin-2fb597157b-316228458.us-east-1.elb.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "dioguscoolus.ironlabs.online.",
+            "Type": "A",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "18.185.68.187"
+                }
+            ]
+        },
+        {
+            "Name": "aaaa-miguel.eks.ironlabs.online.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=miguel,external-dns/resource=httproute/lab4/http-redirect\""
+                }
+            ]
+        },
+        {
+            "Name": "cname-miguel.eks.ironlabs.online.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"heritage=external-dns,external-dns/owner=miguel,external-dns/resource=httproute/lab4/http-redirect\""
+                }
+            ]
+        },
+        {
+            "Name": "miguel.eks.ironlabs.online.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "ZLMOA37VPKANP",
+                "DNSName": "k8s-nginxgat-nginxgat-e458c50531-bce777930613d5fe.elb.us-east-2.amazonaws.com.",
+                "EvaluateTargetHealth": true
+            }
+        },
+        {
+            "Name": "miguel.eks.ironlabs.online.",
+            "Type": "AAAA",
+            "AliasTarget": {
+                "HostedZoneId": "ZLMOA37VPKANP",
+                "DNSName": "k8s-nginxgat-nginxgat-e458c50531-bce777930613d5fe.elb.us-east-2.amazonaws.com.",
+                "EvaluateTargetHealth": true
+            }
+        },
+        {
+            "Name": "result.fatemeh.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "k8s-ingressn-mynginxi-b9d49565c3-47313213305360dc.elb.us-east-1.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "result.staging.fatemeh.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "k8s-ingressn-mynginxi-b9d49565c3-47313213305360dc.elb.us-east-1.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "vote.staging.fatemeh.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "k8s-ingressn-mynginxi-b9d49565c3-47313213305360dc.elb.us-east-1.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "vote.fatemeh.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "k8s-ingressn-mynginxi-b9d49565c3-47313213305360dc.elb.us-east-1.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "gerald.ironlabs.online.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "Z35SXDOTRQ7X7K",
+                "DNSName": "dualstack.k8s-default-uiingres-10f08bf1a2-211132982.us-east-1.elb.amazonaws.com.",
+                "EvaluateTargetHealth": true
+            }
+        },
+        {
+            "Name": "hagen.ironlabs.online.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "ZLMOA37VPKANP",
+                "DNSName": "a629834f4cadd4ac0a5790b4d5649247-562c0d3aa97f135d.elb.us-east-2.amazonaws.com.",
+                "EvaluateTargetHealth": true
+            }
+        },
+        {
+            "Name": "result.joao.and.irene.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "a0e0a406908ba4a4d898986e5a6b0264-1281893804.us-east-1.elb.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "vote.joao.and.irene.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "a0e0a406908ba4a4d898986e5a6b0264-1281893804.us-east-1.elb.amazonaws.com"
+                }
+            ]
+        },
+        {
+            "Name": "app.irene.ironlabs.online.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "Z26RNL4JYFTOTI",
+                "DNSName": "ae044cb336fdd447499a46ad2d713447-8c32e4b4a90743af.elb.us-east-1.amazonaws.com.",
+                "EvaluateTargetHealth": true
+            }
+        },
+        {
+            "Name": "app.joao.ironlabs.online.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "Z26RNL4JYFTOTI",
+                "DNSName": "adca49bf6fa4542a5a129dbe476c5321-e63121efeb8e4144.elb.us-east-1.amazonaws.com.",
+                "EvaluateTargetHealth": true
+            }
+        },
+        {
+            "Name": "website.joao.ironlabs.online.",
+            "Type": "A",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "98.83.113.187"
+                }
+            ]
+        },
+        {
+            "Name": "_bc54ef17f66684f95332979c060d777c.la.ironlabs.online.",
+            "Type": "CNAME",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "_310970278a50fcbee42b867df1e847ca.jkddzztszm.acm-validations.aws"
+                }
+            ]
+        },
+        {
+            "Name": "result.la.ironlabs.online.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "Z35SXDOTRQ7X7K",
+                "DNSName": "k8s-default-votingap-c60d4986e2-1608675921.us-east-1.elb.amazonaws.com.",
+                "EvaluateTargetHealth": false
+            }
+        },
+        {
+            "Name": "vote.la.ironlabs.online.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "Z35SXDOTRQ7X7K",
+                "DNSName": "k8s-default-votingap-c60d4986e2-1608675921.us-east-1.elb.amazonaws.com.",
+                "EvaluateTargetHealth": false
+            }
+        },
+        {
+            "Name": "mariesbakery.miguel.ironlabs.online.",
+            "Type": "A",
+            "AliasTarget": {
+                "HostedZoneId": "Z2FDTNDATAQYW2",
+                "DNSName": "d3df82qnp2n8bt.cloudfront.net.",
+                "EvaluateTargetHealth": false
+            }
+        },
+        {
+            "Name": "subdomain-owner-verification.ironlabs.online.",
+            "Type": "TXT",
+            "TTL": 300,
+            "ResourceRecords": [
+                {
+                    "Value": "\"4dd9b75b24d81c8d78530c596ece86f4\""
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vote-app
+  template:
+    metadata:
+      labels:
+        app: vote-app
+    spec:
+      containers:
+        - image: radoelker/voting-app:latest
+          name: vote
+          env:
+            - name: REDIS_HOST
+              value: "redis-service"
+            - name: REDIS_PORT
+              value: "6379"
+
+          ports:  
+            - containerPort: 80
+              name: http-80-vote
+      restartPolicy: Always

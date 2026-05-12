@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+  labels:
+    app: worker-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-app
+  template:
+    metadata:
+      labels:
+        app: worker-app
+    spec:
+      containers:
+      - name: worker
+        image: radoelker/worker-app:latest
+        imagePullPolicy: Always  
+        env:
+          - name: DB_HOST
+            value: "db"
+          - name: DB_PORT
+            value: "5432"
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_USER
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_PASSWORD
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_DB
+          - name: REDIS_HOST
+            value: "redis-service"
+          - name: REDIS_PORT
+            value: "6379"
+      restartPolicy: Always

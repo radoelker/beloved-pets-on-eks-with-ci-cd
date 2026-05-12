@@ -1,0 +1,10 @@
+beloved-pets-voting-app.sln
+docker-compose.yml
+start.sh
+*.pyc
+project.lock.json
+*/bin/
+*/obj/
+*.vs/
+*/.venv/
+node_modules/

@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Flask app",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "flask",
+      "args": ["run", "--debug"],
+      "env": {
+        "FLASK_APP": "app.py",
+        "REDIS_HOST": "redis",
+        "REDIS_PORT": "6379",
+        "OPTION_A": "Cats",
+        "OPTION_B": "Dogs",
+	"RESULT_HOST": "result-app",
+	"RESULT_PORT": "3000"
+      },
+    }
+  ]
+}
