@@ -4,7 +4,7 @@ This folder contains the Kubernetes manifests that deploy a voting application w
 
 The manifests are ordered for a stable startup: credentials and storage first, followed by database and cache, then application workloads, and finally TLS/ingress.
 
-Directory tree:
+Directory tree for k8s deployments:
 
 ```
 README.md
