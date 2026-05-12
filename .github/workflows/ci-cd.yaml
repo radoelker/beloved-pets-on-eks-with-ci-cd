@@ -35,21 +35,21 @@ jobs:
         with:
           context: ./vote
           push: true
-          tags: ${{ env.DOCKERHUB_USERNAME }}/vote:${{ env.IMAGE_TAG }}
+          tags: ${{ env.DOCKERHUB_USERNAME }}/voting-app:${{ env.IMAGE_TAG }}
 
       - name: Build and push result image
         uses: docker/build-push-action@v6
         with:
           context: ./result
           push: true
-          tags: ${{ env.DOCKERHUB_USERNAME }}/result:${{ env.IMAGE_TAG }}
+          tags: ${{ env.DOCKERHUB_USERNAME }}/result-app:${{ env.IMAGE_TAG }}
 
       - name: Build and push worker image
         uses: docker/build-push-action@v6
         with:
           context: ./worker
           push: true
-          tags: ${{ env.DOCKERHUB_USERNAME }}/worker:${{ env.IMAGE_TAG }}
+          tags: ${{ env.DOCKERHUB_USERNAME }}/worker-app:${{ env.IMAGE_TAG }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -67,6 +67,9 @@ jobs:
 
       - name: Deploy Kubernetes manifests
         run: |
+          kubectl set image deployment/worker-deployment worker=${{ env.DOCKERHUB_USERNAME }}/worker-app:${{ env.IMAGE_TAG }}
+          kubectl set image deployment/result-app result= ${{ env.DOCKERHUB_USERNAME }}/result-app:${{ env.IMAGE_TAG }}
+          kubectl set image deployment/vote-app vote=${{ env.DOCKERHUB_USERNAME }}/voting-app:${{ env.IMAGE_TAG }}
           kubectl rollout status deployment/worker-deployment
           kubectl rollout status deployment/result-app      
           kubectl rollout status deployment/vote-app
