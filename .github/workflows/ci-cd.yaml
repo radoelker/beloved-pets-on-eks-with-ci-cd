@@ -45,21 +45,21 @@ jobs:
         with:
           context: ./vote
           push: true
-          tags: ${{ env.DOCKERHUB_USERNAME }}/voting-app:$${{ steps.vars.outputs.sha_short }}
+          tags: ${{ env.DOCKERHUB_USERNAME }}/voting-app:${{ steps.vars.outputs.sha_short }}
 
       - name: Build and push result image
         uses: docker/build-push-action@v6
         with:
           context: ./result
           push: true
-          tags: ${{ env.DOCKERHUB_USERNAME }}/result-app:$${{ steps.vars.outputs.sha_short }}
+          tags: ${{ env.DOCKERHUB_USERNAME }}/result-app:${{ steps.vars.outputs.sha_short }}
 
       - name: Build and push worker image
         uses: docker/build-push-action@v6
         with:
           context: ./worker
           push: true
-          tags: ${{ env.DOCKERHUB_USERNAME }}/worker-app:$${{ steps.vars.outputs.sha_short }}
+          tags: ${{ env.DOCKERHUB_USERNAME }}/worker-app:${{ steps.vars.outputs.sha_short }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
